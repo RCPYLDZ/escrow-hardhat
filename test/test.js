@@ -42,4 +42,12 @@ describe('Escrow', function () {
       expect(after.sub(before)).to.eq(deposit);
     });
   });
+
+  describe('after cancel from the arbiter', () => {
+    it('beneficiary should revert', async () => {
+      const cancelTxn = await contract.connect(arbiter).cancel();
+      await cancelTxn.wait();
+      await expect(contract.connect(beneficiary).approve()).to.be.reverted;
+    })
+  })
 });

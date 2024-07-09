@@ -4,32 +4,44 @@ export default function Escrow({
   beneficiary,
   value,
   handleApprove,
+  handleCancel,
 }) {
   return (
     <div className="existing-contract">
       <ul className="fields">
         <li>
-          <div> Arbiter </div>
+          <div> Arbiter</div>
           <div> {arbiter} </div>
         </li>
         <li>
-          <div> Beneficiary </div>
+          <div> Beneficiary</div>
           <div> {beneficiary} </div>
         </li>
         <li>
-          <div> Value </div>
+          <div> Value</div>
           <div> {value} </div>
         </li>
         <div
-          className="button"
-          id={address}
-          onClick={(e) => {
-            e.preventDefault();
+            className="button"
+            id={address + "-approve"}
+            onClick={(e) => {
+              e.preventDefault();
 
-            handleApprove();
-          }}
+              handleApprove();
+            }}
         >
           Approve
+        </div>
+        <div
+            className="button"
+            id={address + "-cancel"}
+            onClick={(e) => {
+              e.preventDefault();
+
+              handleCancel();
+            }}
+        >
+          Cancel
         </div>
       </ul>
     </div>
